@@ -1,40 +1,10 @@
 task hello << {
 	println 'hello world!'
-}
-task upper << {
-	String someString="my_name"
-	println "original "+ someString
-	println "Upper case "+someString.toUpperCase()
-}
-task count << {
-	4.times { println "$it" }
-}
-task intro(dependsOn:hello) << {
-
-	println "I'm Gradle"
 
 }
-task taskX(dependsOn:'taskY') << {
-	println 'taskX '
+
+hello.doLast {
+	/*  you could get task.name by $ symbol */
+	println "Greetings from the $hello.name task"
 
 }
-task taskY << {
-	println 'taskY'
-
-}
-4.times {
-	counter-> task "task$counter" <<{
-		println " I'm task number $counter"
-	}
-}
-task0.dependsOn task1,task2
-hello.doFirst{  
-        println 'Hello Venus'  
-}  
-  
-hello.doLast{  
-        println 'Hello Mars'  
-}  
-hello << {  
-        println 'Hello Jupiter'  
-} 
